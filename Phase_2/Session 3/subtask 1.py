@@ -50,7 +50,7 @@ def median_kernel(image , kernel_size):
 
 
 # Take notice that OpenCV handles the image as a numpy array when opening it
-img = cv2.imread(r'C:\Users\Lenovo\OneDrive\Desktop\AUR-Training-25\phase 2\AUR-Training-25\AUR-Training-25\Phase_2\Session 3\image.jpg', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('image.jpg', cv2.IMREAD_GRAYSCALE)
 if img is None:
     print("Error: Image not found.")
     exit()
