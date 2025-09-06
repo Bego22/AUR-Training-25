@@ -14,7 +14,7 @@ out = img.copy() # type: ignore
 # Change all pixels that fit within the black mask to red
 
 height , width , rgb = out.shape
-
+""""
 for i in range(height):
     for j in range(width):
         b,g,r = out[i,j]
@@ -25,6 +25,17 @@ for i in range(height):
 
         elif ( b == 0) and ( g == 0) and ( r == 0) : #BLACK
             out[i][j] = [0,0,255]
+
+    """
+blue_mask = (out[: ,: , 0] >= 100) & (out[: , : , 1] <= 100) & (out[: , : , 2] <= 100)
+red_mask = (out[: ,: , 0] <= 100) & (out[: , : , 1] <= 100) & (out[: , : , 2] >= 100)
+black_mask = (out[: ,: , 0] == 0) & (out[: , : , 1] == 0) & (out[: , : , 2] == 0)
+
+
+out[blue_mask] = [0,0,0]
+out[red_mask] = [255,0,0]
+out[black_mask] = [0,0,255]
+
             
 
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # type: ignore
