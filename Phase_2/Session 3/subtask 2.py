@@ -14,19 +14,6 @@ out = img.copy() # type: ignore
 # Change all pixels that fit within the black mask to red
 
 height , width , rgb = out.shape
-""""
-for i in range(height):
-    for j in range(width):
-        b,g,r = out[i,j]
-        if ( b >= 100 ) and ( g <= 100) and ( r <= 100 ) :#BLUE
-            out[i,j] = [0,0,0]
-        elif (b <= 100) and ( g<= 100) and ( r >= 100) : #RED
-            out[i][j] = [255,0,0]
-
-        elif ( b == 0) and ( g == 0) and ( r == 0) : #BLACK
-            out[i][j] = [0,0,255]
-
-    """
 blue_mask = (out[: ,: , 0] >= 100) & (out[: , : , 1] <= 100) & (out[: , : , 2] <= 100)
 red_mask = (out[: ,: , 0] <= 100) & (out[: , : , 1] <= 100) & (out[: , : , 2] >= 100)
 black_mask = (out[: ,: , 0] == 0) & (out[: , : , 1] == 0) & (out[: , : , 2] == 0)
